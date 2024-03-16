@@ -4,7 +4,7 @@ public:
         int ans = INT_MAX;
         for (auto i = 0; i<nums.size(); i++){
             if (nums[i] < ans){ans = nums[i];}
-            if (nums[(i+nums.size()-1)%(nums.size())] > nums[i]){break;}
+            // if (nums[(i+nums.size()-1)%(nums.size())] > nums[i]){break;}
         }
         return ans;
     }
