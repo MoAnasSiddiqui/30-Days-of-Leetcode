@@ -4,7 +4,7 @@ public:
         uint32_t ans = 0;
         int counter = 31;
         while (n > 0){
-            ans = ans + (pow(2, counter) * (n & 1));
+            ans = ans + ((n & 1) << counter);
             n = (n >> 1);
             counter--;
         }
