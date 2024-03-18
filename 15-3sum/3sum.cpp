@@ -30,9 +30,10 @@ public:
         set<vector<int>> set;
         int sum, start, end;
         for (int i = 0; i<nums.size(); i++){
-            if (nums[i] > 0){break;}
+            
             start = i+1;
             end = nums.size()-1;
+            if (nums[i] > 0 || nums[end] < 0){break;}
             while (end > start){
                 sum = nums[i] + nums[start] + nums[end]; 
                 if (sum == 0){
