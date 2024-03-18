@@ -28,12 +28,13 @@ public:
         sort(nums.begin(), nums.end());
         vector<vector<int>> answer;
         set<vector<int>> set;
+        int sum, start, end;
         for (int i = 0; i<nums.size(); i++){
             if (nums[i] > 0){break;}
-            int start = i+1;
-            int end = nums.size()-1;
+            start = i+1;
+            end = nums.size()-1;
             while (end > start){
-                int sum = nums[i] + nums[start] + nums[end]; 
+                sum = nums[i] + nums[start] + nums[end]; 
                 if (sum == 0){
                     set.insert({nums[i], nums[start], nums[end]});
                     start++;
