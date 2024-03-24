@@ -1,28 +1,33 @@
+#pragma GCC optimize("O3", "unroll-loops")
 class Solution {
 public:
-    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
-        vector<vector<int>> merged;
-        int i = 0;
-
-        while (i < intervals.size() && intervals[i][1] < newInterval[0]) {
-            merged.push_back(intervals[i]);
-            i++;
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) 
+    {
+        vector<vector<int>> ans;
+        int a=newInterval[0], b=newInterval[1];
+        int i=0, n=intervals.size();
+        
+        // Insert intervals before the new interval or non-overlapping intervals
+        for ( ; i < n && intervals[i][1]<a; i++) 
+            ans.push_back(intervals[i]);
+        
+        
+        // Merge overlapping intervals
+        for ( ; i < n && intervals[i][0] <= b; i++) {
+            a = min(a, intervals[i][0]);
+            b = max(b, intervals[i][1]);    
         }
+        
+        ans.push_back({a, b}); // Insert the merged interval
+        
+        // Insert the remaining intervals
+        ans.reserve(ans.size()+intervals.size()-i);
+        ans.insert(ans.end(), intervals.begin()+i, intervals.end());
 
-        while (i < intervals.size() && intervals[i][0] <= newInterval[1]) {
-            newInterval = {min(newInterval[0], intervals[i][0]), max(newInterval[1], intervals[i][1])};
-            i++;
-        }
-        merged.push_back(newInterval);
-
-        while (i < intervals.size()) {
-            merged.push_back(intervals[i]);
-            i++;
-        }
-
-        return merged;
+        return ans;
     }
 };
+
 // class Solution {
 // public:
 //     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
