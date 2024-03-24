@@ -4,26 +4,28 @@ public:
         vector<vector<int>> ans;
         bool insert = false;
         for (auto i : intervals){
-            if (newInterval[1] < i[0] && insert == false){
-                ans.push_back(newInterval);
-                ans.push_back(i);
-                insert = true;
-            } 
-            else if(newInterval[1] >= i[0] && newInterval[1] <= i[1] && insert == false){
-                if (newInterval[0] < i[0]){i[0] = newInterval[0];}
-                insert = true;
-                ans.push_back(i);
-            } 
-            else if(newInterval[0] >= i[0] && newInterval[0] <= i[1] && insert == false){
-                if (newInterval[1] > i[1]){i[1] = newInterval[1];}
-                insert = true;
-                ans.push_back(i);
+            if (insert == false){
+                if (newInterval[1] < i[0]){
+                    ans.push_back(newInterval);
+                    ans.push_back(i);
+                    insert = true;
+                } 
+                else if(newInterval[1] >= i[0] && newInterval[1] <= i[1]){
+                    if (newInterval[0] < i[0]){i[0] = newInterval[0];}
+                    insert = true;
+                    ans.push_back(i);
+                } 
+                else if(newInterval[0] >= i[0] && newInterval[0] <= i[1]){
+                    if (newInterval[1] > i[1]){i[1] = newInterval[1];}
+                    insert = true;
+                    ans.push_back(i);
+                }
+                else if (i[0] >= newInterval[0] && i[1] <= newInterval[1]){
+                    ans.push_back(newInterval);
+                    insert = true;
+                }
+                else {ans.push_back(i);}
             }
-            else if (i[0] >= newInterval[0] && i[1] <= newInterval[1] && insert == false){
-                ans.push_back(newInterval);
-                insert = true;
-            }
-            else if(insert == false){ans.push_back(i);}
             else if (insert == true){
                 if (i[0] <= ans.back()[1] && i[1] > ans.back()[1]){ans.back()[1] = i[1];}
                 else if (i[0] > ans.back()[1]){ans.push_back(i);}
