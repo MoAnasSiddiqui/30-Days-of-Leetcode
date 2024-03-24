@@ -1,4 +1,4 @@
-#pragma GCC optimize("O3", "unroll-loops")
+// #pragma GCC optimize("O3", "unroll-loops")
 class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) 
