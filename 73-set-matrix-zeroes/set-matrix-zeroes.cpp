@@ -18,24 +18,14 @@ public:
                 for (auto j = 1; j<matrix[0].size(); j++){
                     matrix[i][j] = 0;
                 }
-            }
+            } else if (flag_col == true){matrix[i][0] = 0;}
         }
         for (auto j = 1; j<matrix[0].size(); j++){
             if (matrix[0][j] == 0){
                 for (auto i = 1; i<matrix.size(); i++){
                     matrix[i][j] = 0;
                 }
-            }
-        }
-        if (flag_row == true){
-            for (int i = 0; i<matrix[0].size(); i++){
-                matrix[0][i] = 0;
-            }
-        }
-        if (flag_col == true){
-            for (int i = 0; i<matrix.size(); i++){
-                matrix[i][0] = 0;
-            }
+            } else if (flag_row == true){matrix[0][j] = 0;}
         }
     }
 };
