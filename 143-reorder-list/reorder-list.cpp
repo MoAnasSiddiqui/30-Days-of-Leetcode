@@ -2,29 +2,27 @@ class Solution {
 public:
     void reorderList(ListNode* head) {
         if (head->next == nullptr || head->next->next == nullptr){return;}
-        vector<ListNode*> nodes;
+        deque<ListNode*> nodes;
         ListNode* temp = head->next;
         while (temp != nullptr){
             nodes.push_back(temp);
             temp = temp->next;
-            nodes[nodes.size()-1]->next = nullptr;
+            nodes.back()->next = nullptr;
         }
-        int counter_s = 0;
-        int counter_e = nodes.size()-1;
         bool start = false;
         temp = head;
-        while (counter_s <= counter_e){
+        while (nodes.empty() == false){
             if (start == false){
-                temp->next = nodes[counter_e];
-                counter_e --;
+                temp->next = nodes.back();
+                nodes.pop_back();
                 start = true;
                 temp = temp->next;
-            } else if (start == true){
-                temp->next = nodes[counter_s];
-                counter_s++;
+            } else{
+                temp->next = nodes.front();
+                nodes.pop_front();
                 start = false;
                 temp = temp->next;
-            } else {break;}
+            }
         }
         
         // if (head->next == nullptr || head->next->next == nullptr){return;}
