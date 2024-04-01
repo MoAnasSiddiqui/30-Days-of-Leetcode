@@ -3,12 +3,14 @@ public:
     TreeNode* invertTree(TreeNode* root) {
         if (root == nullptr){return root;}
         queue<TreeNode*> q;
+        TreeNode* temp;
+        TreeNode* change;
         q.push(root);
         while (q.empty() == false){
             int count = q.size();
             for (int i = 1; i <= count; i++){
-                TreeNode* temp = q.front();
-                TreeNode* change = temp->left;
+                temp = q.front();
+                change = temp->left;
                 temp->left = temp->right;
                 temp->right = change;
                 if (temp->left != nullptr){q.push(temp->left);}
