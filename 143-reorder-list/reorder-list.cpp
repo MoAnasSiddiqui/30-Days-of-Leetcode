@@ -1,6 +1,9 @@
 class Solution {
 public:
     void reorderList(ListNode* head) {
+
+        // Solution #1 (Reversing List)
+        
         if (head->next == nullptr || head->next->next == nullptr){return;}
         ListNode* slow = head;
         ListNode* fast = head; 
@@ -16,15 +19,6 @@ public:
             prev = slow;
             slow = upnext;
         }
-        // while (head != nullptr){
-        //     cout << head->val << " ";
-        //     head = head->next;
-        // }
-        // cout << endl;
-        // while (prev != nullptr){
-        //     cout << prev->val << " ";
-        //     prev = prev->next;
-        // }
         ListNode* temp1;
         ListNode* temp2;
         while (prev->next != nullptr){
@@ -36,9 +30,7 @@ public:
             prev = temp2;
         }
 
-
-
-
+        // Solution #2 (Using deque)
 
         // if (head->next == nullptr || head->next->next == nullptr){return;}
         // deque<ListNode*> nodes;
