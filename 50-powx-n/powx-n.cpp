@@ -19,7 +19,7 @@ public:
         //     if (ans == 0){break;}
         // }
 
-        if (n == 1 || (x==-1 && n%2==1)){return x;}
+        if (x==-1 && n%2==1){return x;}
         if (n == 0 || (x == -1 && n%2 == 0)){return 1;}
 
         if (n < 0){x = 1/x;}
