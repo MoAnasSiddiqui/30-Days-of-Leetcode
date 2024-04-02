@@ -32,11 +32,9 @@ public:
         while (n != 1){
             if (n % 2 == 1){
                 multiplier = multiplier * ans;
-                n--;
-            } else {
-                ans = ans*ans;
-                n = n/2;
             }
+            ans = ans*ans;
+            n = n/2;
         }
         
         return ans*multiplier;
