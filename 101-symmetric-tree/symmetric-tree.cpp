@@ -52,10 +52,7 @@ class Solution {
 public:
 
     bool isSymmetric(TreeNode* root) {
-        if(root==nullptr)return false;
-        if(root->left==nullptr&&root->right==nullptr)return true;
-        if(root->left==nullptr||root->right==nullptr)return false;
-        
+        if(root==nullptr)return false;       
         return isSameTree(root->left,root->right);
     }
 };
