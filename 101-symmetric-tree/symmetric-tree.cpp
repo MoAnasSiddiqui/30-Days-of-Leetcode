@@ -43,8 +43,7 @@
     }
 class Solution {
 public:
-    bool isSymmetric(TreeNode* root) {
-        if(root==nullptr)return false;       
+    bool isSymmetric(TreeNode* root) {      
         return isSameTree(root->left,root->right);
     }
 };
