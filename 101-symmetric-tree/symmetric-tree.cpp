@@ -36,10 +36,7 @@
      bool isSameTree(TreeNode* p, TreeNode* q) {
         if(p == NULL && q == NULL){return true;}
         if(p == nullptr || q == nullptr)  {return false;}
-        if(p->val == q->val){
-            return isSameTree(p->left,q->right) && isSameTree(p->right,q->left);
-        }
-        return false;
+        return p->val == q->val && isSameTree(p->left,q->right) && isSameTree(p->right,q->left);
     }
 class Solution {
 public:
