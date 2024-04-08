@@ -34,23 +34,15 @@
  * };
  */
      bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p == NULL && q == NULL)
-        {
-            return true;
-        }
-        if(p == nullptr || q == nullptr)  
-        {
-            return false;
-        }
-        if(p->val == q->val)
-        {
+        if(p == NULL && q == NULL){return true;}
+        if(p == nullptr || q == nullptr)  {return false;}
+        if(p->val == q->val){
             return isSameTree(p->left,q->right) && isSameTree(p->right,q->left);
         }
         return false;
     }
 class Solution {
 public:
-
     bool isSymmetric(TreeNode* root) {
         if(root==nullptr)return false;       
         return isSameTree(root->left,root->right);
