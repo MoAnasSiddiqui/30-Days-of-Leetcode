@@ -17,8 +17,8 @@ public:
             if ((int)i >= 48 && (int)i <= 57){
                 pos = 1;
                 ans = (ans*10) + (int)i - 48;
-                cout << ans << endl;
             } 
+            
             if (sign*ans > INT_MAX){return INT_MAX;}
             if (sign*ans < INT_MIN){return INT_MIN;}           
         }
