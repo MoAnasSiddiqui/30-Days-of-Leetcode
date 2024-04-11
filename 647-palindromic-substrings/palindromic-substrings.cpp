@@ -1,34 +1,29 @@
 class Solution {
 public:
     int countSubstrings(string s) {
+        // Solution: 1
         int count = 0;
 
         for(int i=0; i<s.size(); i++) {
-            int left = i;
-            int right = i + 0;
+            int start = i;
+            int end = i + 0;
 
-            while( left>=0 && right < s.size() && s[right]==s[left]) {
+            while( start>=0 && end < s.size() && s[end]==s[start]) {
                 count++;
-                left--;
-                right++;
+                start--;
+                end++;
             }
 
-            left = i;
-            right = left + 1;
+            start = i;
+            end = start + 1;
 
-            while( left>=0 && right < s.size() && s[right]==s[left]) {
+            while( start>=0 && end < s.size() && s[end]==s[start]) {
                 count++;
-                left--;
-                right++;
+                start--;
+                end++;
             }
         }
         return count;
-        // int ans = 0;
-
-        // Solution: 1
-        // for (auto i=0; i<s.size(); i++){
-        //     count = count + check(s, i, i+1) + check(s, i, i);
-        // }
 
         // Solution: 2
         // vector<vector<bool>> dp(s.size(), vector<bool>(s.size(), false));
