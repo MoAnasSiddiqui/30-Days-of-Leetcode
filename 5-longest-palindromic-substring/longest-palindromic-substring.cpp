@@ -18,13 +18,16 @@ public:
     }
     string longestPalindrome(string s) {
         string ans = "";
+        string temp;
 
         for (auto i=0; i<s.size(); i++){
-            if (check(s, i, i+1).size() > ans.size()){
-                ans = check(s, i, i+1);
+            temp = check(s, i, i+1);
+            if (temp.size() > ans.size()){
+                ans = temp;
             }
-            if (check(s, i, i).size() > ans.size()){
-                ans = check(s, i, i);
+            temp = check(s, i, i);
+            if (temp.size() > ans.size()){
+                ans = temp;
             }
         }
         return ans;
