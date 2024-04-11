@@ -11,11 +11,11 @@ public:
         return count;
     }
     int countSubstrings(string s) {
-        int ans = 0;
+        int count = 0;
 
         for (auto i=0; i<s.size(); i++){
-            ans = ans + check(s, i, i+1) + check(s, i-1, i+1);
+            count = count + check(s, i, i+1) + check(s, i, i);
         }
-        return ans+s.size();
+        return count;
     }
 };
