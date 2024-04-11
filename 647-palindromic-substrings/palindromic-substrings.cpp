@@ -1,7 +1,7 @@
 class Solution {
 public:
     int countSubstrings(string s) {
-        // Solution: 1
+        // Solution: 1 (Constant Space)
         // int count = 0;
 
         // for(int i=0; i<s.size(); i++) {
@@ -34,7 +34,6 @@ public:
 
         for (int i = 2; i < s.size(); i++){
             for (int j = 0; j <= s.size()-1-i; j++){
-                // cout << j << " " << i+j << endl;
                 if (s[j] == s[i+j] && dp[j+1][i+j-1]){dp[j][i+j] = true; ans++;}
             }
         }
