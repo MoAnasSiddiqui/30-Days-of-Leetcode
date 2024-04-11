@@ -1,33 +1,26 @@
 class Solution {
 public:
-    string check(string s, int start, int end){
-        int top = -1;
-        string ans;
-        while (start >= 0 && end < s.size()){
-            if (s[start] == s[end]){
-                if (end-start+1 > top){
-                    top = end - start + 1;
-                    ans = s.substr(start, end-start+1);
-                }
-            }
-            else {break;}
-            start--;
-            end++;
-        }
-        return ans;
-    }
     string longestPalindrome(string s) {
-        string ans = "";
-        string temp;
+        int top = 0;
+        string ans;
 
-        for (auto i=0; i<s.size(); i++){
-            temp = check(s, i, i+1);
-            if (temp.size() > ans.size()){
-                ans = temp;
+        for(int i=0; i<s.size(); i++) {
+            int start = i;
+            int end = i + 0;
+
+            while( start>=0 && end < s.size() && s[end]==s[start]) {
+                if (end-start+1>top){top = end-start+1, ans = s.substr(start, end-start+1);}
+                start--;
+                end++;
             }
-            temp = check(s, i, i);
-            if (temp.size() > ans.size()){
-                ans = temp;
+
+            start = i;
+            end = start + 1;
+
+            while( start>=0 && end < s.size() && s[end]==s[start]) {
+                if (end-start+1>top){top = end-start+1, ans = s.substr(start, end-start+1);}
+                start--;
+                end++;
             }
         }
         return ans;
