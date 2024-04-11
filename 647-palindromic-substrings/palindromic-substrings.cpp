@@ -1,8 +1,6 @@
 class Solution {
 public:
-    bool check(string s){
-        int start = 0;
-        int end = s.size()-1;
+    bool check(string s, int start, int end){
         while (start < end){
             if (s[start] != s[end]){return false;}
             start ++;
@@ -14,8 +12,8 @@ public:
         int ans = 0;
 
         for (auto i=0; i<s.size()-1; i++){
-            for (auto j = i+2; j<=s.size(); j++){
-                ans = ans + check(s.substr(i, j-i));
+            for (auto j = i+1; j<=s.size(); j++){
+                ans = ans + check(s, i, j);
             }
         }
         return ans+s.size();
