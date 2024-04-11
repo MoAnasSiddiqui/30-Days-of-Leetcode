@@ -1,33 +1,22 @@
 class Solution {
 public:
-    int check(string s, int start, int end){
-        int count = 0;
-        while (start >= 0 && end < s.size()){
-            if (s[start] == s[end]){count ++;}
-            else {break;}
-            start--;
-            end++;
-        }
-        return count;
-    }
     int countSubstrings(string s) {
-        int n = s.length();
         int count = 0;
 
-        for(int center=0; center<n; center++) {
-            int left = center;
-            int right = left + 0;
+        for(int i=0; i<s.size(); i++) {
+            int left = i;
+            int right = i + 0;
 
-            while( left>=0 && right < n && s[right]==s[left]) {
+            while( left>=0 && right < s.size() && s[right]==s[left]) {
                 count++;
                 left--;
                 right++;
             }
 
-            left = center;
+            left = i;
             right = left + 1;
 
-            while( left>=0 && right < n && s[right]==s[left]) {
+            while( left>=0 && right < s.size() && s[right]==s[left]) {
                 count++;
                 left--;
                 right++;
