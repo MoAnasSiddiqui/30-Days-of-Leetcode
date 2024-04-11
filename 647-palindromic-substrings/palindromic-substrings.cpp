@@ -28,10 +28,7 @@ public:
         // Solution: 2
         int ans = 0;
         vector<vector<bool>> dp(s.size(), vector<bool>(s.size(), false));
-        // for (int i = 0; i < s.size(); ++i){dp[i][i] = true, ans++;}
-
-        // for (int i = 0; i < s.size()-1; i++){if (s[i] == s[i+1]){dp[i][i+1] = true; ans++;}}
-
+        
         for (int i = 0; i < s.size(); i++){
             for (int j = 0; j <= s.size()-1-i; j++){
                 if (s[j] == s[i+j] && (i <= 1 || dp[j+1][i+j-1])){dp[j][i+j] = true; ans++;}
